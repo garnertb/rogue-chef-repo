@@ -26,7 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, :path => "scripts/install_rvm.sh",  :args => "stable"
   config.vm.provision :shell, :path => "scripts/install_ruby.sh", :args => "1.9.3"
   unless BERKSHELF
-    config.vm.provision :shell, :path => "scripts/geoshape-install.sh", :args => "vagrant"
+    config.vm.provision :shell, :path => "scripts/geoshape-install.sh", :args => "vagrant release-1.0"
+    config.vm.provision :shell, :path => "scripts/firecares.sh"
   end
   config.vm.provision :shell, :inline => "gem install chef --version 11.10.4 --no-rdoc --no-ri --conservative"
 
@@ -41,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10", netmask: "255.255.255.240"
+  #config.vm.network :private_network, ip: "192.168.1.41", netmask: "255.255.255.0"
 
   # Create a public network, obtain it's ip through dhcp and bridge it through host's en0
   # config.vm.network :public_network, :bridge => 'en0: Ethernet', ip: "192.168.10.222", netmask: "255.255.255.0"
