@@ -42,11 +42,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  #config.vm.network :private_network, ip: "192.168.1.41", netmask: "255.255.255.0"
+  config.vm.network :private_network, ip: "192.168.99.100"
 
   # Create a public network, obtain it's ip through dhcp and bridge it through host's en0
   # config.vm.network :public_network, :bridge => 'en0: Ethernet', ip: "192.168.10.222", netmask: "255.255.255.0"
-  config.vm.network :public_network, :bridge => 'en0: Ethernet'
+  # config.vm.network :public_network, :bridge => 'en0: Ethernet'
   #'en1: Wi-Fi (AirPort)'
 
   # Create a public network with a static ip and bridged through host's en0 and specify the netmask
