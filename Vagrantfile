@@ -3,6 +3,7 @@
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
+BERKSHELF = false
 
 # We'll mount the Chef::Config[:file_cache_path] so it persists between
 # Vagrant VMs
@@ -18,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.berkshelf.enabled = true
+  # config.berkshelf.enabled = true
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
@@ -26,6 +27,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Install RVM, Ruby and Chef on the Virtual Machine.
   config.vm.provision :shell, :path => "scripts/install_rvm.sh",  :args => "stable"
   config.vm.provision :shell, :path => "scripts/install_ruby.sh", :args => "1.9.3"
+  unless BERKSHELF
+    config.vm.provision :shell, :path => "scripts/setup_vm.sh", :args => "vagrant"
+  end
   config.vm.provision :shell, :inline => "gem install chef --version 11.10.4 --no-rdoc --no-ri --conservative"
 
 
@@ -40,10 +44,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "192.168.99.100"
 
   # Create a public network, obtain it's ip through dhcp and bridge it through host's en0
-  config.vm.network :public_network, :bridge => 'en0: Ethernet'
+  # config.vm.network :public_network, :bridge => 'en0: Ethernet'
   #'en1: Wi-Fi (AirPort)'
 
   # Create a public network with a static ip and bridged through host's en0 and specify the netmask
