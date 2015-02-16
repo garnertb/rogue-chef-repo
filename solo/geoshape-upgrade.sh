@@ -79,7 +79,7 @@ git checkout ${GEOSHAPE_VERSION}
 # if on a branch, do a pull to get latest on local branch. When a branch is used, user essentially wants the latets
 # 'snapshot' from the specified branch (version)
 CURRENT_BRANCH=`git branch | sed -n '/\* /s///p'`
-if ["$CURRENT_BRANCH" != "(no branch)"]
+if [ "$CURRENT_BRANCH" != "(no branch)" ];
 then
   git pull
 fi
