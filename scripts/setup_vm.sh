@@ -30,7 +30,7 @@ if [ -d rogue-chef-repo ];
 then
 cd rogue-chef-repo
 else
-git clone https://github.com/ROGUE-JCTD/rogue-chef-repo.git
+git clone https://github.com/garnertb/rogue-chef-repo -b firecares-deployed
 cd rogue-chef-repo
 fi
 bundle install
