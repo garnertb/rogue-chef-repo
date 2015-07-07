@@ -1,8 +1,8 @@
 DEPENDENCIES
   fail2ban (~> 2.2.1)
   rogue
-    git: https://github.com/state-hiu/rogue-cookbook.git
-    revision: 3c62b7baa4ec42a84ac064df22f51f07f416cfcd
+    git: https://github.com/garnertb/rogue-cookbook.git
+    revision: 0f55e5bfa34d9269f4c547cc57cee9967ab9eb40
     ref: master
 
 GRAPH
