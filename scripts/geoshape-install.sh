@@ -84,7 +84,11 @@ fi
 
 git checkout ${GEOSHAPE_VERSION}
 
+gem install bundler
 bundle install
+berks install
+git reset --hard
+berks shelf uninstall mysql -f
 berks install
 cd ..
 

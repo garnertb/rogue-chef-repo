@@ -1,5 +1,22 @@
 {
-  "run_list": [
-    "role[geoshape_core]"
-  ]
+"vagrant": true,
+"run_list": [
+    "role[geoshape_core]",
+    "recipe[rogue::iaff]"
+  ],
+  "rogue": {
+    "django_maploom": {
+      "auto_upgrade": true
+    },
+    "rogue_geonode": {
+      "branch": "response-capability-form",
+      "url": "https://github.com/garnertb/rogue_geonode.git",
+      "python_packages": ["uwsgi", "psycopg2", "git+git://github.com/ROGUE-JCTD/iaff_geoshape.git"],
+      "settings": {
+        "DATABASES":{
+          "default":{"engine": "django.contrib.gis.db.backends.postgis"}
+         }
+      }
+    }
+}
 }
