@@ -3,7 +3,7 @@ DEPENDENCIES
   rogue
     git: https://github.com/garnertb/rogue-cookbook.git
     revision: 0f55e5bfa34d9269f4c547cc57cee9967ab9eb40
-    ref: master
+    ref: fire-cares
 
 GRAPH
   apt (2.7.0)
